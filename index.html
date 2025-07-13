@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header id="home">
+        <div class="hero">
+            <h1>Conocé nuestros productos</h1>
+            <p>Elegí lo que más te guste</p>
+            <a href="#gallery" class="btn">Ver galería</a>
+        </div>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+        </div>
+    </header>
+
+    <main>
+        <section id="featured-products">
+            <h2>Productos Destacados</h2>
+            <div class="carousel">
+                <!-- Productos destacados se cargarán aquí -->
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="gallery-header">
+                <h2>Galería de Productos</h2>
+                <input type="text" id="search-bar" placeholder="Buscar productos...">
+            </div>
+            <div id="product-list">
+                <!-- Productos se cargarán aquí -->
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>Sobre Nosotros</h2>
+            <div class="about-content">
+                <img src="images/about.jpg" alt="Sobre Nosotros">
+                <p>Aquí va una breve descripción de tu marca o historia. Puedes hablar de tus valores, tu proceso artesanal, o lo que te hace especial.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contacto</h2>
+            <form>
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Mensaje" required></textarea>
+                <button type="submit" class="btn">Enviar</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
