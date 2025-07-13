@@ -81,30 +81,20 @@ searchBar.addEventListener('keyup', (e) => {
     displayProducts(filteredProducts);
 });
 
-// Sample featured product data
-const featuredProducts = [
-    {
-        name: 'Producto Destacado 1',
-        image: 'images/featured1.jpg',
-        price: '$25'
-    },
-    {
-        name: 'Producto Destacado 2',
-        image: 'images/featured2.jpg',
-        price: '$30'
-    }
-];
-
 // Populate featured products carousel
+const featuredProducts = products.filter(p => p.featured);
 const carousel = document.querySelector('.carousel');
-featuredProducts.forEach(product => {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p>${product.price}</p>
-        <a href="https://wa.me/yourphonenumber" class="whatsapp-btn">Consultar por WhatsApp</a>
-    `;
-    carousel.appendChild(card);
-});
+if (featuredProducts.length > 0) {
+    featuredProducts.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+        `;
+        carousel.appendChild(card);
+    });
+} else {
+    document.getElementById('featured-products').style.display = 'none';
+}

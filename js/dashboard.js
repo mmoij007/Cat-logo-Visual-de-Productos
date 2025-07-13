@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             productEl.innerHTML = `
                 <span>${product.name} - ${product.price}</span>
                 <div>
+                    <button onclick="toggleFeatured(${product.id})">${product.featured ? 'Quitar Destacado' : 'Destacar'}</button>
                     <button onclick="editProduct(${product.id})">Editar</button>
                     <button onclick="deleteProduct(${product.id})">Eliminar</button>
                 </div>
@@ -83,6 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
     window.deleteProduct = (id) => {
         products = products.filter(product => product.id !== id);
     saveProducts();
+        renderProducts();
+    };
+
+    window.toggleFeatured = (id) => {
+        const productIndex = products.findIndex(p => p.id == id);
+        products[productIndex].featured = !products[productIndex].featured;
+        saveProducts();
         renderProducts();
     };
 
