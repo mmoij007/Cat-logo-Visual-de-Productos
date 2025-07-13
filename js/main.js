@@ -31,19 +31,22 @@ themeSwitch.addEventListener('change', () => {
     document.body.classList.toggle('dark-mode');
 });
 
-// Sample product data
-const products = [
+// Load products from localStorage or use sample data
+let products = JSON.parse(localStorage.getItem('products')) || [
     {
+        id: 1,
         name: 'Producto 1',
         image: 'images/product1.jpg',
         price: '$10'
     },
     {
+        id: 2,
         name: 'Producto 2',
         image: 'images/product2.jpg',
         price: '$15'
     },
     {
+        id: 3,
         name: 'Producto 3',
         image: 'images/product3.jpg',
         price: 'Consultar'
@@ -61,7 +64,6 @@ function displayProducts(productsToDisplay) {
             <img src="${product.image}" alt="${product.name}">
             <h3>${product.name}</h3>
             <p>${product.price}</p>
-            <a href="https://wa.me/yourphonenumber" class="whatsapp-btn">Consultar por WhatsApp</a>
         `;
         productList.appendChild(card);
     });

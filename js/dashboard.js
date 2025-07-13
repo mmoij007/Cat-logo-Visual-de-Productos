@@ -5,11 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const addProductForm = document.getElementById('add-product-form');
     const productManagementList = document.getElementById('product-management-list');
 
-    // Dummy product data
-    let products = [
+    // Load products from localStorage or use sample data
+    let products = JSON.parse(localStorage.getItem('products')) || [
         { id: 1, name: 'Producto 1', price: '$10', image: 'images/product1.jpg' },
         { id: 2, name: 'Producto 2', price: '$15', image: 'images/product2.jpg' }
     ];
+
+    function saveProducts() {
+        localStorage.setItem('products', JSON.stringify(products));
+    }
 
     function renderProducts() {
         productManagementList.innerHTML = '<h3>Gestionar Productos</h3>';
@@ -18,7 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
             productEl.classList.add('product-item');
             productEl.innerHTML = `
                 <span>${product.name} - ${product.price}</span>
-                <button onclick="deleteProduct(${product.id})">Eliminar</button>
+                <div>
+                    <button onclick="editProduct(${product.id})">Editar</button>
+                    <button onclick="deleteProduct(${product.id})">Eliminar</button>
+                </div>
             `;
             productManagementList.appendChild(productEl);
         });
@@ -68,12 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'images/new-product.jpg' // Placeholder
         };
         products.push(newProduct);
+    saveProducts();
         renderProducts();
         addProductForm.reset();
     });
 
     window.deleteProduct = (id) => {
         products = products.filter(product => product.id !== id);
+    saveProducts();
         renderProducts();
     };
 
@@ -107,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const price = document.getElementById('edit-product-price').value;
         const productIndex = products.findIndex(p => p.id == id);
         products[productIndex] = { ...products[productIndex], name, price };
+    saveProducts();
         renderProducts();
         editModal.style.display = 'none';
     });

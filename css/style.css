@@ -254,6 +254,19 @@ footer {
     text-decoration: none;
 }
 
+.contact-icons {
+    margin-bottom: 1rem;
+}
+
+.contact-icons a {
+    margin: 0 1rem;
+}
+
+.contact-icons img {
+    width: 30px;
+    height: 30px;
+}
+
 
 #gallery {
     padding: 2rem;
@@ -296,15 +309,5 @@ footer {
 .card img {
     max-width: 100%;
     height: auto;
-    border-radius: 5px;
-}
-
-.whatsapp-btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
     border-radius: 5px;
 }
