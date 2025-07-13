@@ -4,6 +4,27 @@ document.querySelector('.btn').addEventListener('click', function(e) {
     document.querySelector('#gallery').scrollIntoView({ behavior: 'smooth' });
 });
 
+// Scroll animations
+const sections = document.querySelectorAll('section');
+const options = {
+    root: null,
+    threshold: 0.1,
+    rootMargin: "0px"
+};
+
+const observer = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, options);
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+
 // Dark mode toggle
 const themeSwitch = document.getElementById('checkbox');
 themeSwitch.addEventListener('change', () => {
