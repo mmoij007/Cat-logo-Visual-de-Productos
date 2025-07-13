@@ -20,6 +20,19 @@
             <h3>Gestionar Productos</h3>
             <!-- Product list will be dynamically populated here -->
         </div>
+
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h3>Editar Producto</h3>
+                <form id="edit-product-form">
+                    <input type="hidden" id="edit-product-id">
+                    <input type="text" id="edit-product-name" placeholder="Nombre del producto" required>
+                    <input type="text" id="edit-product-price" placeholder="Precio" required>
+                    <button type="submit" class="btn">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
     </div>
     <script src="js/dashboard.js"></script>
 </body>
